@@ -1,4 +1,4 @@
-cd ~/Bosch-Azure-Devops-Nov-22/Hands-On/Kubernetes/06-Persistent-and-ephemeral-volumes/05-02-UserMgmt-WebApp-with-MySQLDB/
+cd ~/databricks-k8s-bangalore-mar-23/Hands-On/Kubernetes/06-Persistent-and-ephemeral-volumes/05-02-UserMgmt-WebApp-with-MySQLDB/
 
 # Deploy UserManagement Web Application with MySQL Database
 
