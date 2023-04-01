@@ -3,8 +3,8 @@
 ## Introduction
 
 # Get the resource group name of the AKS cluster
-AKS_NAME="aksatin"
-AKS_RG="rgaksatin"
+AKS_NAME="akstrng"
+AKS_RG="rgtrngaks"
 
 az aks get-credentials --name $AKS_NAME --resource-group $AKS_RG --admin
 
@@ -13,14 +13,14 @@ CLSTR_RG_NAME2=${CLSTR_RG_NAME//\"}
 echo $CLSTR_RG_NAME2
 
 # Create Public IP
-INGRESS_PUB_IP=$(az network public-ip create --resource-group $CLSTR_RG_NAME2 --name myAKSPublicIPForIngress --sku Standard --allocation-method static --query publicIp.ipAddress -o json)
+INGRESS_PUB_IP=$(az network public-ip create --resource-group $CLSTR_RG_NAME2 --name myAKSPublicIPForIngress --sku Basic --allocation-method static --query publicIp.ipAddress -o json)
 INGRESS_PUB_IP2=${INGRESS_PUB_IP//\"}
 echo $INGRESS_PUB_IP2
 
 #- Make a note of Static IP which we will use in next step when installing Ingress Controller
 
 # Make a note of Public IP created for Ingress
-#52.154.156.139
+#23.96.84.208
 
 # Install Helm3 (if not installed)
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
@@ -38,7 +38,7 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 helm repo update
 
 # If required
-#helm uninstall ingress-nginx  --namespace ingress-basic
+helm uninstall ingress-nginx  --namespace ingress-basic
 
 # Use Helm to deploy an NGINX ingress controller
 helm install ingress-nginx ingress-nginx/ingress-nginx \
@@ -106,7 +106,7 @@ kubectl get pods -n ingress-basic
 
 
 kubectl logs -f <pod-name> -n ingress-basic
-kubectl logs -f ingress-nginx-controller-7fbcf5c5f6-6ptp6 -n ingress-basic
+kubectl logs -f ingress-nginx-controller-659bff66d7-gh5sx -n ingress-basic
 
 
 ## Clean-Up Apps
